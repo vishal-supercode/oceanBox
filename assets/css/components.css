@@ -167,6 +167,7 @@
   height: 13px;
   display: block;
   object-fit: contain;
+  transform: translateX(1px);
 }
 
 
