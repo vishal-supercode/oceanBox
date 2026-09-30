@@ -102,7 +102,7 @@ main {
 }
 
 .services-view-arrow img {
-  width: 0v5w;
+  width: 0.5  5vw;
   height: auto;
   display: block;
   object-fit: contain;
@@ -125,6 +125,11 @@ main {
   grid-column: 1;
   grid-row: 1;
 }
+
+.service-card:nth-child(1) .service-card-text {
+  margin-top: 12px;
+}
+
 .service-card:nth-child(2) {
   grid-column: 2;
   grid-row: 2;
@@ -142,7 +147,8 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 78fr) minmax(0, 255fr) minmax(0, 178fr);
   align-items: center;
-  padding: 2.1vw 2.2vw;
+  aspect-ratio: 577 / 112;       /* every card gets the same shape */
+  padding: 0 2.2vw;              /* vertical size now comes from aspect-ratio */
   background: #002d8d;
   border-radius: clamp(10px, 1.06vw, 16px);
 }
@@ -154,8 +160,10 @@ main {
 
 .service-card-icon img {
   display: block;
-  width: 60%;
+  width: auto;
   height: auto;
+  max-width: 60%;
+  max-height: 4.6vw;             /* keeps the tall person icon inside the card */
   object-fit: contain;
 }
 
@@ -193,6 +201,7 @@ main {
   }
 
   .service-card {
+    aspect-ratio: auto;
     padding: 20px;
     grid-template-columns: 48px 1fr;
     column-gap: 16px;
@@ -216,6 +225,8 @@ main {
   }
   .service-card-icon img {
     width: 100%;
+    max-width: none;
+    max-height: 48px;
   }
   .service-card-title {
     font-size: 18px;

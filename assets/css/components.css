@@ -29,8 +29,8 @@
 }
 
 .logo-image {
-  width: 46px;
-  height: 46px;
+  width: clamp(150px, 17vw, 259px);
+  height: auto;
   display: block;
   object-fit: contain;
 }
@@ -68,10 +68,6 @@
   opacity: 0.8;
 }
 
-/* CONTACT BUTTON */
-
-/* CONTACT BUTTON */
-
 .contact-btn {
   margin-left: auto;
   box-sizing: border-box;
@@ -92,11 +88,6 @@
   transition: transform 0.2s ease;
 }
 
-.contact-btn:hover {
-  transform: translateY(-1px);
-}
-
-/* CONTACT ARROW */
 
 .contact-arrow {
   width: 30px;
@@ -137,10 +128,6 @@
   transition: transform 0.2s ease;
 }
 
-.about-btn:hover {
-  transform: translateY(-1px);
-}
-
 .about-arrow {
   width: 30px;
   height: 30px;
@@ -168,12 +155,7 @@
   }
 
   .logo-image {
-    width: 38px;
-    height: 38px;
-  }
-
-  .logo-text {
-    font-size: 38px;
+    width: 190px;
   }
 
   .navbar-links {
@@ -222,13 +204,7 @@
   }
 
   .logo-image {
-    width: 34px;
-    height: 34px;
-  }
-
-  .logo-text {
-    margin-left: 6px;
-    font-size: 30px;
+    width: 150px;
   }
 
   .contact-btn {
