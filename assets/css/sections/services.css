@@ -1,0 +1,223 @@
+/* SERVICES SECTION */
+.services-section {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background: var(--color-white);
+
+  /* gap between container-section and the services image */
+  padding-top: 17vw;
+}
+
+.services-background {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* TITLE + BUTTON WRAPPER */
+.services-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  isolation: isolate;
+}
+
+/* GRADIENT
+   total height = 4vw (overlap above) + 19.5vw (gap) + 14vw (fade onto image) = 37.5vw
+   container image bottom ≈ 11%, title ≈ 55%, services image top ≈ 63% */
+.services-transition::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4vw;
+  width: 100%;
+  height: 37.5vw;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 218, 253, 0)    0%,
+    rgba(10, 218, 253, 0)    11%,
+    rgba(10, 218, 253, 0.55) 35%,
+    rgba(10, 218, 253, 1)    52%,
+    rgba(10, 218, 253, 1)    60%,
+    rgba(10, 218, 253, 0.45) 78%,
+    rgba(10, 218, 253, 0)    100%
+  );
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.services-transition::after {
+  content: none;
+}
+
+main {
+  overflow-x: clip;
+}
+
+/* OUR SERVICES */
+.services-transition h2 {
+  position: relative;
+  z-index: 3;
+
+  margin: 14vw 0 0;   /* sits at the bottom of the gap, just above the image */
+
+  color: var(--color-white);
+  font-family: Arial, sans-serif;
+  font-size: 68px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* VIEW SERVICES BUTTON (scaled up to match the design) */
+.services-view-btn {
+  position: relative;
+  z-index: 3;
+
+  margin-top: 1.8vw;
+
+  width: 13.3vw;
+  height: 3.3vw;
+  padding: 0 0.4vw 0 2vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--color-white);
+  border-radius: 100px;
+
+  color: var(--color-black);
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 1.05vw;
+  font-weight: 700;
+}
+
+.services-view-arrow {
+  width: 2.7vw;
+  height: 2.7vw;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.services-view-arrow img {
+  width: 0.6vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transform: translateX(1px);
+}
+
+/* =========================================
+   SERVICE CARDS
+   ========================================= */
+
+.services-cards {
+  position: absolute;
+  z-index: 3;
+
+  /* services image starts at 19.5vw; Figma puts the first card ~6.8vw below it */
+  top: 26.3vw;
+  left: 6.6vw;    /* 100 / 1512 */
+  right: 6.6vw;
+
+  display: grid;
+  grid-template-columns: repeat(2, 44%);   /* 577 / 1312 */
+  justify-content: space-between;
+  row-gap: 3.3vw;                          /* 50 / 1512 */
+}
+
+/* staggered placement: left, right, left, right */
+.service-card:nth-child(1) { grid-column: 1; grid-row: 1; }
+.service-card:nth-child(2) { grid-column: 2; grid-row: 2; }
+.service-card:nth-child(3) { grid-column: 1; grid-row: 3; }
+.service-card:nth-child(4) { grid-column: 2; grid-row: 4; }
+
+.service-card {
+  display: grid;
+  /* icon | title | description, proportions taken from Figma */
+  grid-template-columns: minmax(0, 78fr) minmax(0, 255fr) minmax(0, 178fr);
+  align-items: center;
+
+  padding: 2.1vw 2.2vw;
+  background: #002d8d;
+  border-radius: clamp(10px, 1.06vw, 16px);
+}
+
+.service-card-icon {
+  display: flex;
+  align-items: center;
+}
+
+.service-card-icon img {
+  display: block;
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+
+.service-card-title {
+  margin: 0;
+  color: #0adafd;
+  font-family: Arial, sans-serif;
+  font-size: clamp(14px, 1.59vw, 24px);   /* 24px at 1512 */
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.service-card-text {
+  margin: 0;
+  color: var(--color-white, #fff);
+  font-family: Arial, sans-serif;
+  font-size: clamp(10px, 1.06vw, 16px);   /* 16px at 1512 */
+  font-weight: 400;
+  line-height: 1.32;
+}
+
+/* MOBILE: cards drop below the image in a single column */
+@media (max-width: 768px) {
+  .services-cards {
+    position: static;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    padding: 24px 16px;
+  }
+
+  .service-card:nth-child(n) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .service-card {
+    padding: 20px;
+    grid-template-columns: 48px 1fr;
+    column-gap: 16px;
+    row-gap: 6px;
+  }
+
+  .service-card-icon { grid-row: 1 / span 2; }
+  .service-card-icon img { width: 100%; }
+  .service-card-title { font-size: 18px; }
+  .service-card-text { font-size: 14px; }
+}
